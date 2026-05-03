@@ -5,6 +5,10 @@
   'knockout' => true,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/service-pricing/style.scss'])
+@endpush
+
 @section('block-content')
   @if($pricing_tiers)
     <div class="card-wrap card-service-tier-wrap">

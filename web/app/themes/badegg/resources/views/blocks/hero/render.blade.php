@@ -5,6 +5,10 @@
   'knockout' => true,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/hero/style.scss'])
+@endpush
+
 @section('block-content')
   <div class="block-hero">
     <h1 class="mini"><span class="tertiary-lighter">{{ get_field('tiny_title') }}</span></h1>

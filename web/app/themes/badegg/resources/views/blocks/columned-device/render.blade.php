@@ -5,6 +5,10 @@
   'knockout' => true,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/columned-device/style.scss'])
+@endpush
+
 @section('block-content')
   <div class="columned-device-cols">
     <div class="columned-device-col columned-device-col-text wysiwyg">

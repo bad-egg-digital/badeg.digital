@@ -5,6 +5,10 @@
   'knockout' => true,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/latest-post/style.scss'])
+@endpush
+
 @section('block-content')
   <div class="latest-post-cols">
 

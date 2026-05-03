@@ -127,9 +127,11 @@ function auto_register() {
                 "{$slug}-editor-style",
                 \Vite::asset($editorCSS),
                 [],
-                null
+                null,
             );
         }
+
+        /*
 
         // script
         if(file_exists(get_theme_file_path($script))) {
@@ -138,7 +140,10 @@ function auto_register() {
                 \Vite::asset($script),
                 [],
                 null,
-                true
+                [
+                    'in_footer' => true,
+                    'strategy' => 'defer',
+                ],
             );
         }
 
@@ -148,7 +153,7 @@ function auto_register() {
                 "{$slug}-style",
                 \Vite::asset($style),
                 [],
-                null
+                null,
             );
         }
 
@@ -159,16 +164,22 @@ function auto_register() {
                 \Vite::asset($viewScript),
                 [],
                 null,
-                true
+                [
+                    'in_footer' => true,
+                    'strategy' => 'defer',
+                ],
             );
         }
 
+        */
+
         $props = [
             'editor_style'      => "{$slug}-editor-style",
-            'style'             => "{$slug}-style",
-            'script'            => "{$slug}-script",
-            'view_script'       => "{$slug}-view-script",
+            // 'style'             => "{$slug}-style",
+            // 'script'            => "{$slug}-script",
+            // 'view_script'       => "{$slug}-view-script",
         ];
+
 
         if(!property_exists($json, 'acf') && \Roots\view()->exists("blocks.{$slug}.render")) {
             $props['render_callback']   = function ($attributes, $content, $block) {

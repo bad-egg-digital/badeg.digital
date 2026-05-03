@@ -7,6 +7,10 @@
   'knockout' => false,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/contact-cards/style.scss'])
+@endpush
+
 @section('block-content')
   <div class="card-wrap">
     <div class="card-flex">

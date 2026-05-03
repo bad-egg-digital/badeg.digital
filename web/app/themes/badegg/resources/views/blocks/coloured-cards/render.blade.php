@@ -5,6 +5,10 @@
   'knockout' => false,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/coloured-cards/style.scss'])
+@endpush
+
 @section('block-content')
   @if($cards)
     <div class="card-wrap card-wrap-coloured">

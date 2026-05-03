@@ -5,6 +5,10 @@
   'knockout' => false,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/coloured-list/style.scss'])
+@endpush
+
 @section('block-content')
   @if(have_rows('list'))
     <div class="coloured-list container-{{ get_field('container_width') }}">

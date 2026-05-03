@@ -5,6 +5,10 @@
   'knockout' => true,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/columned-cta/style.scss'])
+@endpush
+
 @section('block-content')
   <div class="columned-cta-cols">
     <div class="columned-cta-col columned-cta-col-text wysiwyg">
