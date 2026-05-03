@@ -1,3 +1,7 @@
+@push('styles')
+  @vite(['resources/views/blocks/post-masthead/style.scss'])
+@endpush
+
 <div id="{{ @$block['anchor'] ?: $block['id'] }}" @if($is_preview) @else {!! get_block_wrapper_attributes() !!} @endif>
   <h1 class="masthead-heading">{{ $title ?: '[Post Title]' }}</h1>
   <p class="masthead-subtitle">{{ get_field('post_subtitle', get_the_ID()) }}</p>

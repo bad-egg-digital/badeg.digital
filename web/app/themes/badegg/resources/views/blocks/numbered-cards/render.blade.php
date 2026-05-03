@@ -5,6 +5,10 @@
   'knockout' => false,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/numbered-cards/style.scss'])
+@endpush
+
 @section('block-content')
   @if(get_field('cards'))
     <div class="card-wrap card-wrap-numbered">

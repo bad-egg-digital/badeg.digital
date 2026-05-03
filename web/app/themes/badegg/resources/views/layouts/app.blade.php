@@ -7,6 +7,7 @@
     @php(wp_head())
 
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
+    @stack('styles')
   </head>
 
   <body @php(body_class())>
@@ -39,6 +40,7 @@
     </div>
 
     @php(do_action('get_footer'))
+    @stack('scripts')
     @php(wp_footer())
   </body>
 </html>

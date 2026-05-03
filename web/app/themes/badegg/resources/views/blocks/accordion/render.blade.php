@@ -5,6 +5,10 @@
   'knockout' => false,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/accordion/style.scss'])
+@endpush
+
 @section('block-content')
   @if(have_rows('accordions'))
     <div class="accordions-list">

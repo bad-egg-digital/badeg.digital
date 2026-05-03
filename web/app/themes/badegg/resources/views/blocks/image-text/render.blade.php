@@ -5,6 +5,10 @@
   'knockout' => true,
 ])
 
+@push('styles')
+  @vite(['resources/views/blocks/image-text/style.scss'])
+@endpush
+
 @section('block-content')
   <div class="{{ implode(' ', $classes) }}">
     <div class="{{ implode(' ', $textClasses) }}">

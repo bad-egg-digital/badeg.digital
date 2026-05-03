@@ -117,6 +117,7 @@ function auto_register() {
         $blockPath = "resources/views/blocks/{$slug}";
 
         $viewScript = "{$blockPath}/view.js";
+        $viewStyle = "{$blockPath}/view.scss";
         $script = "{$blockPath}/script.js";
         $editorCSS = "{$blockPath}/editor.scss";
         $style = "{$blockPath}/style.scss";
@@ -127,48 +128,62 @@ function auto_register() {
                 "{$slug}-editor-style",
                 \Vite::asset($editorCSS),
                 [],
-                null
-            );
-        }
-
-        // script
-        if(file_exists(get_theme_file_path($script))) {
-            wp_register_script(
-                "{$slug}-script",
-                \Vite::asset($script),
-                [],
                 null,
-                true
-            );
-        }
-
-        // style
-        if (file_exists(get_theme_file_path($style))) {
-            wp_register_style(
-                "{$slug}-style",
-                \Vite::asset($style),
-                [],
-                null
-            );
-        }
-
-        // viewScript
-        if(file_exists(get_theme_file_path($viewScript))) {
-            wp_register_script(
-                "{$slug}-view-script",
-                \Vite::asset($viewScript),
-                [],
-                null,
-                true
             );
         }
 
         $props = [
             'editor_style'      => "{$slug}-editor-style",
-            'style'             => "{$slug}-style",
-            'script'            => "{$slug}-script",
-            'view_script'       => "{$slug}-view-script",
+            // 'style'             => "{$slug}-style",
+            // 'script'            => "{$slug}-script",
+            // 'view_script'       => "{$slug}-view-script",
         ];
+
+        if(!\Roots\view()->exists("blocks.{$slug}.render")) {
+            // style
+            if (file_exists(get_theme_file_path($style))) {
+                wp_register_style(
+                    "{$slug}-style",
+                    \Vite::asset($style),
+                    [],
+                    null,
+                );
+
+                $props['style']  = "{$slug}-style";
+            }
+
+            // viewScript
+            if(file_exists(get_theme_file_path($viewScript))) {
+                wp_register_script(
+                    "{$slug}-view-script",
+                    \Vite::asset($viewScript),
+                    [],
+                    null,
+                    [
+                        'in_footer' => true,
+                        'strategy' => 'defer',
+                    ],
+                );
+
+                $props['view_script']  = "{$slug}-view-script";
+            }
+
+            // script
+            if(file_exists(get_theme_file_path($script))) {
+                wp_register_script(
+                    "{$slug}-script",
+                    \Vite::asset($script),
+                    [],
+                    null,
+                    [
+                        'in_footer' => true,
+                        'strategy' => 'defer',
+                    ],
+                );
+
+                $props['script']  = "{$slug}-script";
+            }
+        }
 
         if(!property_exists($json, 'acf') && \Roots\view()->exists("blocks.{$slug}.render")) {
             $props['render_callback']   = function ($attributes, $content, $block) {
