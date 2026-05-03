@@ -4,11 +4,7 @@ namespace App\FrontEnd;
 
 class EntryMeta
 {
-    public function __construct()
-    {
-        add_shortcode('button', [$this, 'button']);
-
-    }
+    public function __construct() { }
 
     public function get_firstTerm($postID, $tax = '')
     {

@@ -8,6 +8,21 @@
   > *:last-child {
     margin-bottom: 0;
   }
+
+  ul,
+  ol {
+    li {
+      font-size: 1em;
+    }
+
+    @media (min-width: variables.$screen-md) {
+      font-size: 1.125em;
+    }
+
+    @media (min-width: variables.$screen-lg) {
+      font-size: 1.25em;
+    }
+  }
 }
 
 h1,
@@ -137,6 +152,10 @@ ul,
 ol {
   margin: 0 0 0.7em;
   padding: 0 0 0 1.2em;
+
+  li {
+    font-size: 1em;
+  }
 }
 
 .nolist {
