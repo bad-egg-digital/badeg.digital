@@ -150,6 +150,31 @@ function auto_register() {
                 );
 
                 $props['style']  = "{$slug}-style";
+
+                add_filter( 'style_loader_tag', function($html, $handle) use ($slug){
+
+                    if ($handle == "{$slug}-style") {
+
+                        $dom = new \DOMDocument;
+                        $dom->loadHTML($html);
+                        $attr = [];
+
+                        foreach($dom->getElementsByTagName('link') as $tag) {
+                            foreach($tag->attributes as $name => $value) {
+                                $attr[$name] = $tag->getAttribute($name);
+                            }
+                        }
+
+                        if(isset($attr['href']) && $attr['href']) {
+                            $preload = '<link rel="preload" as "style" href="' . $attr['href'] . '">';
+
+                            $html = "$preload\n$html";
+                        }
+                    }
+
+                    return $html;
+
+                }, 10, 2 );
             }
 
             // viewScript
