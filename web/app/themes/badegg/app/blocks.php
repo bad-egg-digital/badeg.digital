@@ -166,7 +166,7 @@ function auto_register() {
                         }
 
                         if(isset($attr['href']) && $attr['href']) {
-                            $preload = '<link rel="preload" as "style" href="' . $attr['href'] . '">';
+                            $preload = '<link rel="preload" as="style" href="' . $attr['href'] . '">';
 
                             $html = "$preload\n$html";
                         }
