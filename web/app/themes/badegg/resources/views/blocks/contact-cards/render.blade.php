@@ -28,21 +28,24 @@
 
         </div>
       </div>
-      <div class="card card-contact bg-white rounded">
-        <div class="inner wysiwyg">
-          <h3>{{ __('Where to find us', 'badegg') }}</h3>
 
-          <h4>{{ __('our location', 'badegg') }}</h4>
-          {!! apply_filters('the_content', $company_address) !!}
+      @if(have_rows('badegg_company_meetings'))
+        <div class="card card-contact bg-white rounded">
+          <div class="inner wysiwyg">
+            <h3>{{ __('Where to find us', 'badegg') }}</h3>
 
-          @while(have_rows('badegg_company_meetings', 'option')) @php(the_row())
-            <h4>{{ get_sub_field('heading') }}</h4>
-            <p>{{ get_sub_field('description') }}</p>
-            <p><a href="{{ get_sub_field('link')['url'] }}" class="btn tertiary" target="{{ get_sub_field('link')['target'] }}">{{ get_sub_field('link')['title'] }}</a></p>
-          @endwhile
+            <h4>{{ __('our location', 'badegg') }}</h4>
+            {!! apply_filters('the_content', $company_address) !!}
 
+            @while(have_rows('badegg_company_meetings', 'option')) @php(the_row())
+              <h4>{{ get_sub_field('heading') }}</h4>
+              <p>{{ get_sub_field('description') }}</p>
+              <p><a href="{{ get_sub_field('link')['url'] }}" class="btn tertiary" target="{{ get_sub_field('link')['target'] }}">{{ get_sub_field('link')['title'] }}</a></p>
+            @endwhile
+
+          </div>
         </div>
-      </div>
+      @endif
 
       @if($company_mailing_list)
         <div class="card card-contact bg-white rounded">
