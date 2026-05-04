@@ -1,7 +1,26 @@
 {
     "key": "group_post_testimonial",
     "title": "Post: Testimonials",
-    "fields": [],
+    "fields": [
+        {
+            "key": "field_69f84fd2e8cd6",
+            "label": "Google Review Link",
+            "name": "testimonial_google_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        }
+    ],
     "location": [
         [
             {
@@ -21,5 +40,7 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1771445593
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1777881090
 }

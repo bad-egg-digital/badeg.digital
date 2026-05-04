@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6a8597af3d51774fe861ac5733cf2b7",
+    "content-hash": "890538a2df3fe85f613bcffd03b3080b",
     "packages": [
         {
             "name": "bad-egg-packagist/bad-egg-digital-login-page",
