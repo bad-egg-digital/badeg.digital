@@ -26,7 +26,8 @@
                 "senary": "<i class=\"fas fa-circle\" style=\"color: #118360\"><\/i> Genoa",
                 "white": "<i class=\"fas fa-circle\" style=\"color: #FFFFFF\"><\/i> White",
                 "grey": "<i class=\"fas fa-circle\" style=\"color: #808080\"><\/i> Gray",
-                "black": "<i class=\"fas fa-circle\" style=\"color: #000000\"><\/i> Black"
+                "black": "<i class=\"fas fa-circle\" style=\"color: #000000\"><\/i> Black",
+                "test": "test"
             },
             "default_value": 0,
             "return_format": "value",
@@ -429,5 +430,7 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1772382669
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1781120846
 }

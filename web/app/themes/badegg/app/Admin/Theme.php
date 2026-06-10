@@ -2,7 +2,7 @@
 
 namespace App\Admin;
 use ourcodeworld\NameThatColor\ColorInterpreter as NameThatColor;
-use App\Utilities;
+use BadEggCup\Data;
 
 class Theme
 {
@@ -13,7 +13,7 @@ class Theme
 
     public function DynamicPalette()
     {
-        $colour = new Utilities\Colour;
+        $colour = new Data\Colour;
         $NameThatColour = new NameThatColor;
 
         $palette = [];

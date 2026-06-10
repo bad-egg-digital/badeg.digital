@@ -50,7 +50,7 @@ class Menus
 
         foreach($items as $item) {
            $icon = get_field('fontawesome_solid', $item);
-           if($icon) $item->title = '<i class="fa fa-' . $icon . '">&nbsp;</i><span>' . $item->title . '</span>';
+           if($icon) $item->title = @file_get_contents(\Vite::asset("resources/images/icons/$icon.svg")) .'<span>' . $item->title . '</span>';
         }
 
         return $items;

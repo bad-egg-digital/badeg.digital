@@ -2,7 +2,7 @@
 
 namespace App\ACF;
 use ourcodeworld\NameThatColor\ColorInterpreter as NameThatColor;
-use App\Utilities;
+use BadEggCup\Data;
 
 class Dynamic
 {
@@ -21,7 +21,7 @@ class Dynamic
 
     public function load_colours( $field )
     {
-        $colour = new Utilities\Colour;
+        $colour = new Data\Colour;
         $NameThatColour = new NameThatColor;
 
         $colours = $colour->values();
@@ -35,12 +35,11 @@ class Dynamic
         endforeach;
 
         return $field;
-
     }
 
     public function load_tints( $field )
     {
-        $colour = new Utilities\Colour;
+        $colour = new Data\Colour;
         $tints = $colour->tints();
 
         $field['choices'] = [];

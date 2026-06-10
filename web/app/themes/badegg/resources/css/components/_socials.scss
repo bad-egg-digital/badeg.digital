@@ -3,10 +3,23 @@
 
   li {
     display: inline-block;
+    vertical-align: middle;
 
     a {
       display: block;
       padding: 0.125em;
+    }
+
+    i {
+      display: block;
+      width: 1em;
+    }
+
+    svg {
+      display: block;
+      fill: currentColor;
+      width: auto;
+      height: 1em;
     }
   }
 }

@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
+use BadEggCup\Tools;
 
 class Index extends Composer
 {
@@ -25,10 +26,11 @@ class Index extends Composer
 
     public function with()
     {
+        $Settings = new Tools\Settings;
         $postType = $this->get_archivePostType();
 
         $postTypeSlug = $postType->name;
-        $pageForPosts = ($postTypeSlug == 'post') ? get_option('page_for_posts') : get_field('page_for_' . $postTypeSlug, 'option');
+        $pageForPosts = ($postTypeSlug == 'post') ? get_option('page_for_posts') : $Settings->lookup($postTypeSlug, 'pagesForArchives');
 
         return [
             'postType' => $postType,

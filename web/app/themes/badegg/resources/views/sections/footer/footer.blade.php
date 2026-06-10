@@ -18,7 +18,7 @@
       <div class="container container-larger">
         <div class="footer-copyright-col">
           <p>
-            <span>&copy;2021-{{ date('Y') }} {{ $company_legal }},</span>
+            <span>&copy;2021-{{ date('Y') }} {{ $company_nameLegal }},</span>
             <span>{{ __('All Rights Reserved', 'badegg') }}</span>
           </p>
 

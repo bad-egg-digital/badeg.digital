@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bad-egg-packagist/bad-egg-cup",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://git.badegg.digital/bad-egg-packagist/bad-egg-cup",
-                "reference": "1.0.5"
+                "reference": "1.0.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://git.badegg.digital/api/packages/bad-egg-packagist/composer/files/bad-egg-packagist%2Fbad-egg-cup/1.0.5/bad-egg-packagist-bad-egg-cup.1.0.5.zip",
-                "shasum": "45cd097b7ffcb4faa08168ff5499b0647d127f0a"
+                "url": "https://git.badegg.digital/api/packages/bad-egg-packagist/composer/files/bad-egg-packagist%2Fbad-egg-cup/1.0.6/bad-egg-packagist-bad-egg-cup.1.0.6.zip",
+                "shasum": "7cc5b9ab7b46173daaa3c5fca3a0dec0c280b892"
             },
             "type": "wordpress-plugin",
             "license": [
@@ -25,7 +25,7 @@
             ],
             "description": "Companion plugin to the Bad Egg Digital Wordpress Theme.",
             "homepage": "https://github.com/bad-egg-digital/bad-egg-cup",
-            "time": "2026-06-07T20:01:57+00:00"
+            "time": "2026-06-10T21:30:47+00:00"
         },
         {
             "name": "bad-egg-packagist/bad-egg-digital-login-page",
@@ -1904,10 +1904,10 @@
         },
         {
             "name": "wpengine/advanced-custom-fields-pro",
-            "version": "6.8.3",
+            "version": "6.8.4",
             "dist": {
                 "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?s=composer&p=pro&t=6.8.3"
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?s=composer&p=pro&t=6.8.4"
             },
             "require": {
                 "composer/installers": "~1.0 || ~2.0"

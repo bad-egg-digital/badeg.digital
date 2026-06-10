@@ -5,6 +5,32 @@
   container-name: BadEggContactCards;
   container-type: inline-size;
 
+  .badeggcup {
+    &-address,
+    &-addressMailing {
+      span {
+        &::after {
+          content: ', ';
+        }
+
+        &:last-of-type::after{ content: none; }
+      }
+
+      &-line {
+        &1, &2, &3, &4 {
+          display: block;
+        }
+      }
+
+      &-city,
+      &-county,
+      &-postcode,
+      &-country {
+        display: inline-block;
+      }
+    }
+  }
+
   .card {
     &-flex {
       justify-content: center;
