@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Utilities;
+use BadEggCup\Data;
 
 class CssClasses {
     public function section($props = [], $name = 'unnamed', $knockout = false)
@@ -21,7 +22,7 @@ class CssClasses {
 
         $props = wp_parse_args($props, $defaults);
 
-        $Colour = new Colour;
+        $Colour = new Data\Colour;
         $hex = $Colour->name2hex($props['bg_colour'], $props['bg_tint']);
 
         $section_sizes = [
@@ -87,7 +88,7 @@ class CssClasses {
             'contrast' => null,
         ]);
 
-        $Colour = new Colour;
+        $Colour = new Data\Colour;
         $hex = $Colour->name2hex($bg_props['bg_colour'], $bg_props['bg_tint']);
 
         $classes = [

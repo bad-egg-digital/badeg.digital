@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
+use BadEggCup\Tools;
 
 class Socials extends Composer
 {
@@ -22,14 +23,10 @@ class Socials extends Composer
      */
     public function with()
     {
+        $Settings = new Tools\Settings;
+
         return [
-            'socials' => get_posts([
-                'post_type' => 'social',
-                'order' => 'ASC',
-                'orderby' => 'menu_order name',
-                'posts_per_page' => -1,
-                'fields' => 'ids',
-            ]),
+            'socials' => $Settings->lookup('socials', 'company'),
         ];
     }
 }

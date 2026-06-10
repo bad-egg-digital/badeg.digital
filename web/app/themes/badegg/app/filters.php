@@ -5,6 +5,7 @@
  */
 
 namespace App;
+use BadEggCup\Tools;
 
 /**
  * Add "… Continued" to the excerpt.
@@ -59,11 +60,12 @@ function remove_postClasses($classes, $class, $post_id) {
 add_filter('body_class', __NAMESPACE__ . '\\firstBlockContrast');
 function firstBlockContrast($classes)
 {
+    $Settings = new Tools\Settings;
     $post = get_post();
 
     if(is_archive()) {
         $postType = @get_queried_object()->name;
-        $postID = get_field('page_for_' . $postType, 'option');
+        $postID = $Settings->lookup($postType, 'pagesForArchives');
         $post = get_post($postID);
     } elseif(is_home()) {
         $postID = get_option('page_for_posts');

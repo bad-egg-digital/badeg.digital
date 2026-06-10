@@ -4,6 +4,7 @@ namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
 use App\Utilities;
+use BadEggCup\Tools;
 
 class Blocks extends Composer
 {
@@ -27,7 +28,7 @@ class Blocks extends Composer
     {
         return [
             'CssClasses' => new Utilities\CssClasses,
-            'ImageSrcset' => new Utilities\ImageSrcset,
+            'ImageSrcset' => new Tools\ImageSrcset,
         ];
     }
 }

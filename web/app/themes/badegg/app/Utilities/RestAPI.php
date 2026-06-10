@@ -2,6 +2,7 @@
 
 namespace App\Utilities;
 use ourcodeworld\NameThatColor\ColorInterpreter as NameThatColor;
+use BadEggCup\Tools;
 
 class RestAPI
 {
@@ -130,7 +131,7 @@ class RestAPI
         register_rest_route($this->restBase, '/image/(?P<id>\d+)/srcset/(?P<size>[a-zA-Z0-9-]+)', [
             'methods' => 'GET',
             'callback' => function($request){
-                $ImageSrcset = new ImageSrcset;
+                $ImageSrcset = new Tools\ImageSrcset;
                 $srcset = $ImageSrcset->srcset(['image' => $request['id'], 'name' => $request['size'], 'sizes' => $request['sizes']]);
 
                 return rest_ensure_response($srcset);

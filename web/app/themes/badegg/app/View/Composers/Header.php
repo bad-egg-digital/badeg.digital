@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
+use BadEggCup\Tools;
 
 class Header extends Composer
 {
@@ -38,11 +39,12 @@ class Header extends Composer
 
     public function firstBlockContrast()
     {
+        $Settings = new Tools\Settings;
         $post = get_post();
 
         if(is_archive() || is_post_type_archive() || is_tax() || is_category() || is_tag()) {
             $postType = @get_queried_object()->name;
-            $postID = get_field('page_for_' . $postType, 'option');
+            $postID = $Settings->lookup($postType, 'pagesForArchives');
             $post = get_post($postID);
         } elseif(is_home()) {
             $postID = get_option('page_for_posts');

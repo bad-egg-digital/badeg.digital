@@ -25,7 +25,7 @@
           <p><a href="mailto:{{ $company_email }}">{{ $company_email }}</a></p>
 
           <h4>{{ __('mailing address', 'badegg') }}</h4>
-          {!! apply_filters('the_content', $company_address_mailing) !!}
+          {!! $company_addressMailing !!}
 
           <h4>{{ __('connect with us', 'badegg') }}</h4>
           @include('components.socials')
@@ -33,23 +33,21 @@
         </div>
       </div>
 
-      @if(have_rows('badegg_company_meetings'))
-        <div class="card card-contact bg-white rounded">
-          <div class="inner wysiwyg">
-            <h3>{{ __('Where to find us', 'badegg') }}</h3>
+      <div class="card card-contact bg-white rounded">
+        <div class="inner wysiwyg">
+          <h3>{{ __('Where to find us', 'badegg') }}</h3>
 
-            <h4>{{ __('our location', 'badegg') }}</h4>
-            {!! apply_filters('the_content', $company_address) !!}
+          <h4>{{ __('our location', 'badegg') }}</h4>
+          {!! $company_address !!}
 
-            @while(have_rows('badegg_company_meetings', 'option')) @php(the_row())
-              <h4>{{ get_sub_field('heading') }}</h4>
-              <p>{{ get_sub_field('description') }}</p>
-              <p><a href="{{ get_sub_field('link')['url'] }}" class="btn tertiary" target="{{ get_sub_field('link')['target'] }}">{{ get_sub_field('link')['title'] }}</a></p>
-            @endwhile
+          @while(have_rows('badegg_company_meetings', 'option')) @php(the_row())
+            <h4>{{ get_sub_field('heading') }}</h4>
+            <p>{{ get_sub_field('description') }}</p>
+            <p><a href="{{ get_sub_field('link')['url'] }}" class="btn tertiary" target="{{ get_sub_field('link')['target'] }}">{{ get_sub_field('link')['title'] }}</a></p>
+          @endwhile
 
-          </div>
         </div>
-      @endif
+      </div>
 
       @if($company_mailing_list)
         <div class="card card-contact bg-white rounded">
