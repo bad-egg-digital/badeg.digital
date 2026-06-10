@@ -25,6 +25,11 @@ add_action( 'admin_init', __NAMESPACE__ . '\\admin_block_cleanup' );
 add_filter( 'block_type_metadata', __NAMESPACE__ . '\\unset_core_supports' );
 
 /**
+ * Restrict Embed Variations
+ */
+add_filter( 'allowed_block_embeds', __NAMESPACE__ . '\\core_embed_variations' );
+
+/**
  * Custom blocks
  */
 add_filter( 'block_categories_all' , __NAMESPACE__ . '\\add_categories' );
@@ -81,6 +86,15 @@ function unset_core_supports($metadata){
     return $metadata;
 }
 
+function core_embed_variations($providers){
+    $whitelist = [
+        'youtube',
+        'vimeo',
+    ];
+
+    return $whitelist;
+}
+
 
 function allowed_list($allowed){
     return array_merge($allowed, [
@@ -105,13 +119,52 @@ function add_categories( $categories ) {
         return $categories;
 }
 
+// https://www.designbombs.com/registering-gutenberg-blocks-for-custom-post-type/
+function get_post_type_in_admin()
+{
+    if(!is_admin()) return;
+
+    global $pagenow;
+    $typenow = '';
+
+    if ( 'post-new.php' === $pagenow ) {
+        if ( isset( $_REQUEST['post_type'] ) && post_type_exists( $_REQUEST['post_type'] ) ) {
+            $typenow = $_REQUEST['post_type'];
+        } else {
+            $typenow = 'post';
+        }
+
+    } elseif ( 'post.php' === $pagenow ) {
+        if ( isset( $_GET['post'] ) && isset( $_POST['post_ID'] ) && (int) $_GET['post'] !== (int) $_POST['post_ID'] ) {
+            // Do nothing
+        } elseif ( isset( $_GET['post'] ) ) {
+            $post_id = (int) $_GET['post'];
+        } elseif ( isset( $_POST['post_ID'] ) ) {
+            $post_id = (int) $_POST['post_ID'];
+        }
+        if ( $post_id ) {
+            $post = get_post( $post_id );
+            $typenow = $post->post_type;
+        }
+    }
+
+    return $typenow;
+}
+
 function auto_register() {
     $blocks = glob(get_theme_file_path('resources/views/blocks/*/block.json'));
 
     foreach ($blocks as $block_json) {
         $json = json_decode(file_get_contents($block_json));
 
-        if(@$json->disabled) continue;
+        if(!class_exists('ACF') && property_exists($json, 'acf'))
+            continue;
+
+        if(@$json->disabled)
+            continue;
+
+        if(@$json->postTypes && !in_array(get_post_type_in_admin(), @$json->postTypes))
+            continue;
 
         $slug = basename(dirname($block_json));
         $blockPath = "resources/views/blocks/{$slug}";
